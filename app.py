@@ -30,7 +30,7 @@ def get_island_by_id(island_id):
 
 @app.route("/api/parks")
 def get_all_parks():
-    island = request.args.get('island')
+    # island = request.args.get('island')
     return jsonify(data.parks)
 
 
