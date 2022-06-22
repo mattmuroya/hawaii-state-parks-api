@@ -1,0 +1,179 @@
+openapi: 3.0.2
+info:
+  title: Hawaii State Parks API
+  description: >-
+    Provides name, description, and park activities for each of Hawaii's state
+    parks, monuments, and recreation areas by island.
+  version: 1.0.0
+  contact:
+    email: matt.muroya@gmail.com
+  license:
+    name: MIT License
+    url: https://github.com/mattmuroya/hawaii-state-parks-api/blob/main/LICENSE
+externalDocs:
+  description: Hawaii State Parks API on GitHub
+  url: https://github.com/mattmuroya/hawaii-state-parks-api
+servers:
+  - url: http://hawaii-state-parks-api.mattmuroya.com/api/
+paths:
+  /parks:
+    get:
+      tags:
+        - parks
+      summary: Get a list of parks filtered by activities and island.
+      description: >-
+        Returns a list of parks with park names, IDs, descriptions, activities,
+        and island. Optionally, you can filter results by activites and island.
+        If you do not provide any query parameters, this endpoint returns a
+        complete list of all parks data.
+      operationId: get_all_data
+      parameters:
+        - in: query
+          name: activities
+          description: >-
+            A list of activity IDs by which to filter results, separated by
+            commas.<br/><br/>For a list of possible values, see the
+            documentation on
+            [GitHub](https://github.com/mattmuroya/hawaii-state-parks-api).
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+        - in: query
+          name: islands
+          description: >-
+            A list of island IDs by which to filter results, separated by
+            commas.<br/><br/>For a list of possible values, see the
+            documentation on
+            [GitHub](https://github.com/mattmuroya/hawaii-state-parks-api).
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+          style: form
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Park"
+        400:
+          description: Invalid query parameter
+          content: {}
+  /parks/{parkId}:
+    get:
+      tags:
+        - parks
+      summary: Get data for a specific park by its park ID.
+      description: >-
+        Returns park name, description, activies, and island for a specific park
+        by its park ID. You can find a complete list of park IDs on
+        [GitHub](https://github.com/mattmuroya/hawaii-state-parks-api).
+      operationId: get_park_by_id
+      parameters:
+        - in: path
+          name: parkId
+          description: >-
+            The ID for the park data you want to retrieve.<br/><br/>For a list
+            of possible values, see the documentation on
+            [GitHub](https://github.com/mattmuroya/hawaii-state-parks-api).
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Park"
+        400:
+          description: Invalid park ID
+          content: {}
+        404:
+          description: Park ID not found
+          content: {}
+  /activities:
+    get:
+      tags:
+        - activities
+      summary: Get a list of park activities and activity IDs.
+      description: Returns a list of park activities and their associated activity IDs.
+      operationId: get_all_activies
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Activity"
+  /islands:
+    get:
+      tags:
+        - islands
+      summary: Get a list of islands and island IDs.
+      description: Returns a list of islands and their associated island IDs.
+      operationId: get_all_islands
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Island"
+components:
+  schemas:
+    Park:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 28
+        url:
+          type: string
+          example: https://dlnr.hawaii.gov/dsp/parks/oahu/waahila-ridge-state-recreation-area/
+        name:
+          type: string
+          example: Waʻahila Ridge State Recreation Area
+        description:
+          type: string
+          example: >-
+            Wildland picnicking on a Norfolk Island pine forested ridge with
+            fine views of Manoa and Palolo valleys. Enjoy hardy family hiking in
+            the forest reserve.
+        activities:
+          type: array
+          items:
+            type: integer
+          example: [8, 11]
+        islandId:
+          type: integer
+          example: 2
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 8
+        name:
+          type: string
+          example: hiking
+    Island:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        name:
+          type: string
+          example: Oʻahu

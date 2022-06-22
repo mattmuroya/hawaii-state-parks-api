@@ -2,32 +2,22 @@ islands = [
     {
         "id": 1,
         "name": "Kauaʻi",
-        "nameCanonical": "kauai",
-        "numberOfParks": 9
     },
     {
         "id": 2,
         "name": "Oʻahu",
-        "nameCanonical": "oahu",
-        "numberOfParks": 20
     },
     {
         "id": 3,
         "name": "Hawaiʻi",
-        "nameCanonical": "hawaii",
-        "numberOfParks": 14
     },
     {
         "id": 4,
         "name": "Maui",
-        "nameCanonical": "maui",
-        "numberOfParks": 8
     },
     {
         "id": 5,
         "name": "Molokaʻi",
-        "nameCanonical": "molokai",
-        "numberOfParks": 1
     }
 ]
 

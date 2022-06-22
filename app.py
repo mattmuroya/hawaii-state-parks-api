@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 import data
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 app.url_map.strict_slashes = False
 
 
@@ -30,7 +31,6 @@ def get_island_by_id(island_id):
 
 @app.route("/api/parks")
 def get_all_parks():
-    # island = request.args.get('island')
     return jsonify(data.parks)
 
 
