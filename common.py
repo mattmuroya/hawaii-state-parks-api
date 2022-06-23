@@ -27,3 +27,9 @@ def park_contains_activity_id(park, ids):
     for id_ in park["activities"]:
         if id_ in ids:
             return True
+
+
+def populate_subdata(park):
+    park["island"] = get_island_name_by_id(park["island"])
+    park["activities"] = list(
+        map(get_activity_name_by_id, park["activities"]))

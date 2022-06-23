@@ -46,9 +46,7 @@ def get_parks():
                 filter((lambda park: common.park_contains_activity_id(park, activity_ids)), arr))
 
         for park in arr:
-            park["island"] = common.get_island_name_by_id(park["island"])
-            park["activities"] = list(
-                map(common.get_activity_name_by_id, park["activities"]))
+            common.populate_subdata(park)
 
         return jsonify(arr)
     except ValueError:
@@ -60,7 +58,9 @@ def get_park_by_id(park_id):
     try:
         for park in data.parks:
             if park["id"] == int(park_id):
-                return park
+                park_copy = copy.deepcopy(park)
+                common.populate_subdata(park_copy)
+                return park_copy
         return {"error": "Park ID not found"}, 404
     except ValueError:
         return {"error": "Invalid park ID"}, 400
