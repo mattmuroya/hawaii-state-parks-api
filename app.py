@@ -17,7 +17,7 @@ def aloha_world():
 
 
 @app.route("/api/parks")
-def get_all_parks():
+def get_parks():
     try:
         arr = copy.deepcopy(data.parks)
 
