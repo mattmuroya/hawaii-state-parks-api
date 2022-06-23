@@ -1,5 +1,6 @@
 import copy
 from flask import Flask, jsonify, request
+from flask_swagger_ui import get_swaggerui_blueprint
 import data
 import common
 
@@ -7,8 +8,21 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 app.url_map.strict_slashes = False
 
+SWAGGER_URL = ""
+API_URL = "/static/openapi.yml"
 
-@app.route("/")
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        "app_name": "Hawaii State Parks API"
+    }
+)
+
+app.register_blueprint(swaggerui_blueprint)
+
+
+@app.route("/aloha")
 def aloha_world():
     return "aloha, world!"
 
