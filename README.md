@@ -52,7 +52,9 @@ any query parameters, the request returns a complete list of all parks data.
 curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks?activities=8,14&islands=2"
 ```
 
-### Sample Response
+### Sample Responses
+
+#### `200`: OK
 
 ```json
 [
@@ -124,6 +126,14 @@ curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks?activities=8
   </tbody>
 </table>
 
+#### `400`: Invalid query parameters
+
+```json
+{
+  "error": "Invalid query parameters"
+}
+```
+
 ## **`GET:`** /parks/{parkId}
 
 Returns park name, description, activities, and island for a specific park by
@@ -155,7 +165,9 @@ its park ID.
 curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks/28"
 ```
 
-### Sample Response
+### Sample Responses
+
+#### `200`: OK
 
 ```json
 {
@@ -210,6 +222,22 @@ curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks/28"
   </tbody>
 </table>
 
+#### `400`: Invalid park ID
+
+```json
+{
+  "error": "Invalid park ID"
+}
+```
+
+#### `404`: Park ID not found
+
+```json
+{
+  "error": "Park ID not found"
+}
+```
+
 ## **`GET:`** /activities
 
 Returns a list of park activities and their associated activity IDs. No
@@ -221,7 +249,9 @@ additional parameters.
 curl -X GET "http://hawaii-state-parks-api.herokuapp.com/api/activities"
 ```
 
-### Sample Response
+### Sample Responses
+
+#### `200`: OK
 
 ```json
 [
@@ -270,7 +300,9 @@ parameters.
 curl -X GET "http://hawaii-state-parks-api.herokuapp.com/api/islands"
 ```
 
-### Sample Response
+### Sample Responses
+
+#### `200`: OK
 
 ```json
 [
