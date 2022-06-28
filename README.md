@@ -7,14 +7,17 @@ that provides name, description, and park activities for each of Hawaii's state
 parks, monuments, and recreation areas by island.
 
 _**Note:** Park data and description copy for this API was collected from
-https://dlnr.hawaii.gov/dsp. This API is not maintained by or affiliated with
+https://dlnr.hawaii.gov/dsp/. This API is not maintained by nor affiliated with
 the Hawaii DLNR or Division of State Parks in any way._
 
 [SwaggerUI Demo](https://hawaii-state-parks-api.herokuapp.com/)
 
 ## **`GET:`** /parks
 
-Get a list of parks filtered by activities and island.
+Returns a list of parks with park names, IDs, descriptions, activities, location
+(island), and a URL to the park's DNLR page. Optionally, you can provide query
+parameters to filter results by activities and by island. If you do not provide
+any query parameters, the request returns a complete list of all parks data.
 
 ### Query Parameters
 
@@ -35,7 +38,7 @@ Get a list of parks filtered by activities and island.
       <td>A list of activity IDs by which to filter results, separated by commas. The response contains only parks that include at least one of the specified activities.<br /><br /><strong>Example:</strong><br /><br /><code>/parks?activities=1,3,5</code><br /><br /><a href="#activity-ids">List of possible values</a></td>
     </tr>
     <tr>
-      <td><code>activities</code></td>
+      <td><code>islands</code></td>
       <td><code>array[integer]</code></td>
       <td><code>false</code></td>
       <td>A list of island IDs by which to filter results, separated by commas. The response contains only parks located on one of the specified islands.<br /><br /><strong>Example:</strong><br /><br /><code>/parks?islands=3,4</code><br /><br /><a href="#island-ids">List of possible values</a></td>
@@ -46,7 +49,7 @@ Get a list of parks filtered by activities and island.
 ### Sample Request
 
 ```console
-curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks?activities=3,14&islands=2"
+curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks?activities=8,14&islands=2"
 ```
 
 ### Sample Response
@@ -55,7 +58,7 @@ curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks?activities=3
 [
   {
     "id": 15,
-    "url": "",
+    "url": "https://dlnr.hawaii.gov/dsp/parks/oahu/kaena-point-state-park/",
     "name": "Kaʻena Point State Park",
     "description": "Ka‘ena Point State Park is a relatively remote and wild coastline park with hiking, picnicking, and shoreline fishing opportunities.  The park wraps around the northwest corner of the island of Oahu and is composed of two sections: the Ka‘ena Point Mokuleia Section (north shore of Oahu) and the Ka‘ena Point Keawa’ula Section (west side of Oahu). Ka‘ena Point State Park is the gateway to Ka‘ena Point Natural Area Reserve at O‘ahu’s most northwestern point.  A large sandy beach at Keawa’ula Bay with board surfing and body surfing for experts and swimming only during calm conditions in the summer; lifeguard services.",
     "activities": ["Beachgoing", "Fishing", "Hiking", "Wildlife Viewing"],
@@ -116,14 +119,15 @@ curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks?activities=3
     <tr>
       <td><code>island</code></td>
       <td><code>string</code></td>
-      <td>The name of the island on which the park is location.</td>
+      <td>The name of the island on which the park is located.</td>
     </tr>
   </tbody>
 </table>
 
 ## **`GET:`** /parks/{parkId}
 
-Get data for a specific park by its park ID.
+Returns park name, description, activities, and island for a specific park by
+its park ID.
 
 ### Path Parameters
 
@@ -139,7 +143,7 @@ Get data for a specific park by its park ID.
   <tbody>
     <tr>
       <td><code>parkId</code></td>
-      <td><code>string</code></td>
+      <td><code>integer</code></td>
       <td><code>true</code></td>
       <td>The ID for the park you want to get.<br /><br /><a href="#park-ids" >List of possible values</a></td></tr>
   </tbody>
@@ -201,14 +205,15 @@ curl -X GET "https://hawaii-state-parks-api.herokuapp.com/api/parks/28"
     <tr>
       <td><code>island</code></td>
       <td><code>string</code></td>
-      <td>The name of the island on which the park is location.</td>
+      <td>The name of the island on which the park is located.</td>
     </tr>
   </tbody>
 </table>
 
 ## **`GET:`** /activities
 
-Get a list of park activities and activity IDs. No parameters.
+Returns a list of park activities and their associated activity IDs. No
+additional parameters.
 
 ### Sample Request
 
@@ -256,7 +261,8 @@ curl -X GET "http://hawaii-state-parks-api.herokuapp.com/api/activities"
 
 ## **`GET:`** /islands
 
-Get a list of islands and island IDs. No parameters.
+Returns a list of islands and their associated island IDs. No additional
+parameters.
 
 ### Sample Request
 

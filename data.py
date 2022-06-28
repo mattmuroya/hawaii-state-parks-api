@@ -201,7 +201,7 @@ parks = [
     },
     {
         "id": 15,
-        "url": "",
+        "url": "https://dlnr.hawaii.gov/dsp/parks/oahu/kaena-point-state-park/",
         "name": "Kaʻena Point State Park",
         "description": "Ka‘ena Point State Park is a relatively remote and wild coastline park with hiking, picnicking, and shoreline fishing opportunities.  The park wraps around the northwest corner of the island of Oahu and is composed of two sections: the Ka‘ena Point Mokuleia Section (north shore of Oahu) and the Ka‘ena Point Keawa’ula Section (west side of Oahu). Ka‘ena Point State Park is the gateway to Ka‘ena Point Natural Area Reserve at O‘ahu’s most northwestern point.  A large sandy beach at Keawa’ula Bay with board surfing and body surfing for experts and swimming only during calm conditions in the summer; lifeguard services.",
         "activities": [1, 7, 8, 14],
