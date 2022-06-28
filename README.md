@@ -7,8 +7,9 @@ that provides name, description, and park activities for each of Hawaii's state
 parks, monuments, and recreation areas by island.
 
 _**Note:** Park data and description copy for this API was collected from
-https://dlnr.hawaii.gov/dsp/. This API is not maintained by nor affiliated with
-the Hawaii DLNR or Division of State Parks in any way._
+[https://dlnr.hawaii.gov/dsp/](https://dlnr.hawaii.gov/dsp/). This API is not
+maintained by nor affiliated with the Hawaii DLNR or Division of State Parks in
+any way._
 
 [SwaggerUI Demo](https://hawaii-state-parks-api.herokuapp.com/)
 
@@ -333,7 +334,7 @@ curl -X GET "http://hawaii-state-parks-api.herokuapp.com/api/islands"
       <td>The island ID. Each island has a unique ID value.</td>
     </tr>
     <tr>
-      <td><code>island</code></td>
+      <td><code>name</code></td>
       <td><code>string</code></td>
       <td>The island name.</td>
     </tr>

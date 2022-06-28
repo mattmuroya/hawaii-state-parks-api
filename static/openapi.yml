@@ -7,8 +7,9 @@ info:
     that provides name, description, and park activities for each of Hawaii's
     state parks, monuments, and recreation areas by island. <br /><br />
     _**Note:** Park data and description copy for this API was collected from
-    https://dlnr.hawaii.gov/dsp/. This API is not maintained by nor affiliated
-    with the Hawaii DLNR or Division of State Parks in any way._
+    [https://dlnr.hawaii.gov/dsp/](https://dlnr.hawaii.gov/dsp/). This API is
+    not maintained by nor affiliated with the Hawaii DLNR or Division of State
+    Parks in any way._
   version: 1.0.0
   contact:
     email: matt.muroya@gmail.com
