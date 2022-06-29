@@ -16,9 +16,10 @@ any way._
 ## **`GET:`** /parks
 
 Returns a list of parks with park names, IDs, descriptions, activities, location
-(island), and a URL to the park's DNLR page. Optionally, you can provide query
-parameters to filter results by activities and by island. If you do not provide
-any query parameters, the request returns a complete list of all parks data.
+(island), and a URL to the park page on the Hawaii DNLR page. Optionally, you
+can provide query parameters to filter results by activities and by island. If
+you do not provide any query parameters, the request returns a complete list of
+all parks data.
 
 ### Query Parameters
 
@@ -156,7 +157,7 @@ its park ID.
       <td><code>parkId</code></td>
       <td><code>integer</code></td>
       <td><code>true</code></td>
-      <td>The ID for the park you want to get.<br /><br /><a href="#park-ids" >List of possible values</a></td></tr>
+      <td>The ID for the park you want to get.<br/><br/><strong>Example:</strong><br/><br/><code>/parks/28</code><br /><br /><a href="#park-ids" >List of possible values</a></td></tr>
   </tbody>
 </table>
 
