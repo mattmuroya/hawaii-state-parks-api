@@ -1,6 +1,8 @@
+To run this application, clone the repository, `pip install -r requirements.txt` and run `python app.py`.
+
 # Hawaii State Parks API
 
-**Base URL:** `hawaii-state-parks-api.herokuapp.com/api`
+<!--**Base URL:** `hawaii-state-parks-api.herokuapp.com/api`-->
 
 [OpenAPI Specification](https://www.openapis.org/) 3.0-compliant RESTful API
 that provides name, description, and park activities for each of Hawaii's state
