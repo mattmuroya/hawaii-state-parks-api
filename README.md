@@ -13,7 +13,7 @@ _**Note:** Park data and description copy for this API was collected from
 maintained by nor affiliated with the Hawaii DLNR or Division of State Parks in
 any way._
 
-[SwaggerUI Demo](https://hawaii-state-parks-api.herokuapp.com/)
+<!--[SwaggerUI Demo](https://hawaii-state-parks-api.herokuapp.com/)-->
 
 ## **`GET:`** /parks
 
